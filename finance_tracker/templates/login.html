@@ -1,0 +1,53 @@
+ <!-- Authentication Forms Section -->
+ <div id="authForms" class="auth-forms">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <i class="bi bi-wallet2 fs-1"></i>
+                <h2>Money Flow Manager</h2>
+                <p class="text-light">Manage your finances with ease</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="form-section active">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <h4 class="card-title text-center mb-4">Login</h4>
+                        <form id="loginFormElement">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>
+                                    </span>
+                                    <input type="email" class="form-control" id="loginEmail" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="loginPassword" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Remember me
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mb-3">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>
+                                Login
+                            </button>
+                        </form>
+                        <div class="text-center">
+                            <p class="mb-0">Don't have an account? 
+                                <a href="#" onclick="showRegistrationForm()" class="text-primary">Register here</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
