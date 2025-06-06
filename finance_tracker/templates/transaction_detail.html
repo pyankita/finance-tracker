@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .card-custom {
+    max-width: 700px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+  .card-header {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+  }
+  .detail-label {
+    font-weight: 600;
+  }
+  .action-links a {
+    margin-right: 20px;
+    font-weight: 600;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .action-links a:hover {
+    color: #084298;
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container my-5">
+  <div class="card card-custom shadow-sm">
+    <div class="card-header bg-primary text-white text-center">
+      <h3 class="mb-0">{{ transaction.title }}</h3>
+    </div>
+    <div class="card-body px-5 py-4">
+      <p class="fs-5">
+        <span class="detail-label">Amount:</span>
+        {% if transaction.type == 'expense' %}
+          <span class="text-danger fw-bold fs-5">- ${{ transaction.amount }}</span>
+        {% else %}
+          <span class="text-success fw-bold fs-5">+ ${{ transaction.amount }}</span>
+        {% endif %}
+      </p>
+
+      <p>
+        <span class="detail-label">Type:</span>
+        <span class="badge {% if transaction.type == 'income' %}bg-success{% else %}bg-danger{% endif %} fs-6 px-3 py-2">
+          {{ transaction.type|capfirst }}
+        </span>
+      </p>
+
+      <p>
+        <span class="detail-label">Category:</span>
+        <span class="text-secondary fs-6">{{ transaction.category }}</span>
+      </p>
+
+      <p>
+        <span class="detail-label">Date:</span>
+        <span class="text-muted fs-6">{{ transaction.date|date:"F j, Y" }}</span>
+      </p>
+    </div>
+
+    <div class="px-5 mb-3 action-links">
+      <a href="#" class="btn btn-outline-primary btn-sm">Edit</a>
+      <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
+    </div>
+
+    <div class="card-footer text-center">
+      <a href="{% url 'transaction-list' %}" class="btn btn-primary">
+        ← Back to Transactions
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from finance_tracker.models import Transaction
 
-# Register your models here.
+
+admin.site.register(Transaction)

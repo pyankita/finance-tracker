@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Transactions - Finance Tracker{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Transactions</h2>
+    <a href="{% url 'transaction-create' %}" class="btn btn-primary">Add Transaction</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.title }}</td>
+                <td>
+                    {% if transaction.type == 'expense' %}
+                        <span class="text-danger">- ${{ transaction.amount }}</span>
+                    {% else %}
+                        <span class="text-success">+ ${{ transaction.amount }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <span class="badge {% if transaction.type == 'income' %}bg-success{% else %}bg-danger{% endif %}">
+                        {{ transaction.type|capfirst }}
+                    </span>
+                </td>
+                <td>{{ transaction.date }}</td>
+                <td>
+                    
+                    <a href="{% url 'transaction-detail' transaction.pk %}" >
+                        View
+                    </a>
+                    
+                </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center text-muted">No transactions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
