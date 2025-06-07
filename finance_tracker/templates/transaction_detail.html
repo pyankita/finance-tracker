@@ -40,9 +40,9 @@
       <p class="fs-5">
         <span class="detail-label">Amount:</span>
         {% if transaction.type == 'expense' %}
-          <span class="text-danger fw-bold fs-5">- ${{ transaction.amount }}</span>
+          <span class="text-danger fw-bold fs-5">- Rs {{ transaction.amount }}</span>
         {% else %}
-          <span class="text-success fw-bold fs-5">+ ${{ transaction.amount }}</span>
+          <span class="text-success fw-bold fs-5">+ Rs ∆{{ transaction.amount }}</span>
         {% endif %}
       </p>
 
