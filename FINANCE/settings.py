@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-wx(7#h8l)x!dpp9$2qm=_6(3ecz@51+hjma91kyhu=4-s_vh4=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,3 +124,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'transaction-list'  
 LOGOUT_REDIRECT_URL = 'login'            
+
+
+ALLOWED_HOSTS = ['finance-tracker-lth7.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://finance-tracker-lth7.onrender.com',
+]
