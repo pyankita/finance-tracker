@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 90vh; background: #f8f9fa;">
+  <div class="card shadow-lg border-0 p-5" style="width: 100%; max-width: 600px; border-radius: 1.2rem; min-height: 450px;">
+      <h2 class="text-center mb-5 text-dark fw-bold">Login to Your Account</h2>
+      
+      <form method="post" novalidate class="d-flex flex-column align-items-center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn w-100 mt-5" style="background-color: #064420; color: white; font-weight: 700; font-size: 1.2rem; padding: 10px 30px;">
+          Login
+        </button>
+        
+      </form>
+      <div class="text-center mt-3">
+        <small>Don't have an account? <a href="#" style="color: #064420; font-weight: 600;">Register</a></small>
+      </div>
+  </div>
+</div>
+{% endblock %}

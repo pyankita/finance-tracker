@@ -4,14 +4,15 @@ from finance_tracker.forms import RegisterForm
 from django.contrib.auth import login
 from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
 from django.db.models import Sum
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
-class TransactionListView(ListView):
+class TransactionListView(LoginRequiredMixin,ListView):
     model=Transaction
     template_name="transaction_list.html"
     context_object_name='transactions'
     ordering=['-date']
+    paginate_by = 8
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -42,24 +43,24 @@ class TransactionListView(ListView):
         context['balance'] = balance
         return context
 
-class TransactionDetailView(DetailView):
+class TransactionDetailView(LoginRequiredMixin,DetailView):
     model=Transaction
     template_name="transaction_detail.html"
     context_object_name="transaction"
 
-class TransactionCreateView(CreateView):
+class TransactionCreateView(LoginRequiredMixin,CreateView):
     model=Transaction
     template_name="transaction_create.html"
     fields="__all__"
     success_url=reverse_lazy('transaction-list')
 
-class TransactionDeleteView(DeleteView):
+class TransactionDeleteView(LoginRequiredMixin,DeleteView):
     model=Transaction
     template_name="transaction_delete.html"
     success_url=reverse_lazy("transaction-list")
 
 
-class TransactionUpdateView(UpdateView):
+class TransactionUpdateView(LoginRequiredMixin,UpdateView):
     model=Transaction
     template_name="transaction_update.html"
     fields="__all__"
