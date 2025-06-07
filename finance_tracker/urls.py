@@ -11,5 +11,6 @@ urlpatterns = [
     path("create/",views.TransactionCreateView.as_view(),name="transaction-create"),
     path("delete/<int:pk>/",views.TransactionDeleteView.as_view(),name="transaction-delete"),
     path("update/<int:pk>/",views.TransactionUpdateView.as_view(),name="transaction-update"),
+    path("register/",views.RegistrationCreateView.as_view(),name="register"),
 
 ]

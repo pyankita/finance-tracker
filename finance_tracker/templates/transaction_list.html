@@ -3,15 +3,16 @@
 {% block title %}Transactions - Finance Tracker{% endblock %}
 
 {% block content %}
+
 <div class="mb-4">
     <div class="alert alert-dark shadow-sm text-center rounded-4">
       <h4 class="mb-2">Current Balance: 
         <span class="{% if balance >= 0 %}text-success{% else %}text-danger{% endif %}">
-          ${{ balance }}
+          Rs {{ balance }}
         </span>
       </h4>
-      <p class="mb-0">Income: <span class="text-success">${{ total_income }}</span></p>
-      <p class="mb-0">Expense: <span class="text-danger">${{ total_expense }}</span></p>
+      <p class="mb-0">Income: <span class="text-success">Rs {{ total_income }}</span></p>
+      <p class="mb-0">Expense: <span class="text-danger">Rs {{ total_expense }}</span></p>
     </div>
   </div>
 
@@ -67,9 +68,9 @@
                 <td>{{ transaction.title }}</td>
                 <td>
                     {% if transaction.type == 'expense' %}
-                        <span class="text-danger">- ${{ transaction.amount }}</span>
+                        <span class="text-danger">- Rs {{ transaction.amount }}</span>
                     {% else %}
-                        <span class="text-success">+ ${{ transaction.amount }}</span>
+                        <span class="text-success">+ Rs {{ transaction.amount }}</span>
                     {% endif %}
                 </td>
                 <td>
@@ -95,8 +96,8 @@
         </tbody>
     </table>
     {% if is_paginated %}
-<nav aria-label="Page navigation example" class="mt-4">
-  <ul class="pagination justify-content-center">
+        <nav aria-label="Page navigation example" class="mt-4">
+         <ul class="pagination justify-content-center">
 
     {% if page_obj.has_previous %}
       <li class="page-item">
