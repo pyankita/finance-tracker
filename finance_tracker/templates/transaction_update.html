@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Update Transaction - Finance Tracker{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 600px;">
+  <h2 class="mb-4">Update Transaction</h2>
+  
+  <form method="post" novalidate>
+    {% csrf_token %}
+    
+    {{form.as_p}}
+    
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'transaction-detail' transaction.pk %}" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
+{% endblock %}

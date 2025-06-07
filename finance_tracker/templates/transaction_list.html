@@ -3,6 +3,48 @@
 {% block title %}Transactions - Finance Tracker{% endblock %}
 
 {% block content %}
+<div class="mb-4">
+    <div class="alert alert-dark shadow-sm text-center rounded-4">
+      <h4 class="mb-2">Current Balance: 
+        <span class="{% if balance >= 0 %}text-success{% else %}text-danger{% endif %}">
+          ${{ balance }}
+        </span>
+      </h4>
+      <p class="mb-0">Income: <span class="text-success">${{ total_income }}</span></p>
+      <p class="mb-0">Expense: <span class="text-danger">${{ total_expense }}</span></p>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <form method="get" class="row g-3 align-items-center">
+  
+      <div class="col-auto">
+        <label for="type" class="form-label fw-bold">Type:</label>
+        <select name="type" id="type" class="form-select">
+          <option value="" {% if not request.GET.type %}selected{% endif %}>All</option>
+          <option value="income" {% if request.GET.type == 'income' %}selected{% endif %}>Income</option>
+          <option value="expense" {% if request.GET.type == 'expense' %}selected{% endif %}>Expense</option>
+        </select>
+      </div>
+  
+      <div class="col-auto">
+        <label for="start_date" class="form-label fw-bold">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" class="form-control" value="{{ request.GET.start_date }}">
+      </div>
+  
+      <div class="col-auto">
+        <label for="end_date" class="form-label fw-bold">End Date:</label>
+        <input type="date" id="end_date" name="end_date" class="form-control" value="{{ request.GET.end_date }}">
+      </div>
+  
+      <div class="col-auto align-self-end">
+        <button type="submit" class="btn btn-primary">Filter</button>
+        <a href="{% url 'transaction-list' %}" class="btn btn-secondary ms-2">Reset</a>
+      </div>
+  
+    </form>
+  </div>
+  
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Transactions</h2>
     <a href="{% url 'transaction-create' %}" class="btn btn-primary">Add Transaction</a>
