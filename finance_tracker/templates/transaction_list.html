@@ -68,9 +68,9 @@
                 <td>{{ transaction.title }}</td>
                 <td>
                     {% if transaction.type == 'expense' %}
-                        <span class="text-danger">- Rs {{ transaction.amount }}</span>
+                        <span class="text-danger"> - Rs {{ transaction.amount }}</span>
                     {% else %}
-                        <span class="text-success">+ Rs {{ transaction.amount }}</span>
+                        <span class="text-success"> + Rs {{ transaction.amount }}</span>
                     {% endif %}
                 </td>
                 <td>

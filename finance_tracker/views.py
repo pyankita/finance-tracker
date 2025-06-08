@@ -54,7 +54,7 @@ class TransactionDetailView(LoginRequiredMixin,DetailView):
 class TransactionCreateView(LoginRequiredMixin,CreateView):
     model=Transaction
     template_name="transaction_create.html"
-    fields=["title","amount","type","category"]
+    fields=["title","amount","date","type","category"]
     success_url=reverse_lazy('transaction-list')
 
     def form_valid(self, form):
@@ -70,7 +70,7 @@ class TransactionDeleteView(LoginRequiredMixin,DeleteView):
 class TransactionUpdateView(LoginRequiredMixin,UpdateView):
     model=Transaction
     template_name="transaction_update.html"
-    fields=["title","amount","type","category"]
+    fields=["title","amount","date","type","category"]
     success_url=reverse_lazy("transaction-list")
 
 class RegistrationCreateView(CreateView):
